@@ -1,0 +1,2197 @@
+{
+	"info": {
+		"_postman_id": "cf02f670-37e9-4e98-b0e3-43748f6466aa",
+		"name": "asbolsun",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "register",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f4e037e6-cd89-497f-9388-88f981a190db",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"postman.setEnvironmentVariable(\"token\", jsonData.token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "phone",
+									"value": "7029376545",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "profile",
+									"value": "{\"first_name\": \"asdasdf\", \"last_name\": \"Asdasdfasdf\"}",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": [],
+									"disabled": true
+								},
+								{
+									"key": "profile.first_name",
+									"value": "sedi",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "profile.last_name",
+									"value": "gamidov",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "profile.image_url",
+									"type": "file",
+									"src": "/home/usedi/Pictures/Screenshot from 2019-10-26 12-35-59.png",
+									"disabled": true
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/users/register/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"users",
+								"register",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1d80f540-84a3-444e-87f8-7d5be0c8e17b",
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"postman.setEnvironmentVariable(\"token\", jsonData.token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "phone",
+									"value": "7021234567",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8000/api/users/login/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"users",
+								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "users",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8000/api/users/users/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"users",
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "users me",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "JWT {{token}}"
+							},
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "localhost:8000/api/users/users/me/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"users",
+								"users",
+								"me",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Profile",
+			"item": [
+				{
+					"name": "get profile",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8000/api/users/profiles/1/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"users",
+								"profiles",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update profile",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "JWT {{token}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "first_name",
+									"value": "Sedi Updated",
+									"type": "text"
+								},
+								{
+									"key": "last_name",
+									"value": "Gamidov",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/home/usedi/Pictures/Screenshot from 2019-09-12 01-50-53.png"
+								},
+								{
+									"key": "business_center",
+									"value": "4",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8000/api/users/profiles/1/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"users",
+								"profiles",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Business Center",
+			"item": [
+				{
+					"name": "business centers list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/main/business_centers/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"main",
+								"business_centers",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "business centers by town",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/main/business_centers/by_town/?town=1",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"main",
+								"business_centers",
+								"by_town",
+								""
+							],
+							"query": [
+								{
+									"key": "town",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "business centers create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Test",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Some Description",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/home/usedi/Pictures/Screenshot from 2019-09-12 01-45-40.png"
+								},
+								{
+									"key": "address.address",
+									"value": "someaddress",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "address.hint",
+									"value": "asdcasdc",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "address.lat",
+									"value": "12.11111",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "address.long",
+									"value": "56.23233",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "address.town",
+									"value": "1",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "address_id",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8000/api/main/business_centers/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"main",
+								"business_centers",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "business centers detail",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/main/business_centers/14/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"main",
+								"business_centers",
+								"14",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "business centers update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Test Updated",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Some Description",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/home/usedi/Pictures/Screenshot from 2019-09-12 01-45-40.png"
+								},
+								{
+									"key": "address.address",
+									"value": "someaddress",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "address.hint",
+									"value": "asdcasdc",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "address.lat",
+									"value": "12.432343",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "address.long",
+									"value": "56.23233",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "address.town",
+									"value": "1",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8000/api/main/business_centers/17/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"main",
+								"business_centers",
+								"17",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "business centers delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/main/business_centers/17/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"main",
+								"business_centers",
+								"17",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Restaurant",
+			"item": [
+				{
+					"name": "restaurant list",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8000/api/main/restaurants/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"main",
+								"restaurants",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "restaurants by town",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8000/api/main/restaurants/by_town/?town=1",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"main",
+								"restaurants",
+								"by_town",
+								""
+							],
+							"query": [
+								{
+									"key": "town",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "restaurants create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Test",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Some Description",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/home/usedi/Pictures/Screenshot from 2019-09-12 01-45-40.png"
+								},
+								{
+									"key": "address.address",
+									"value": "someaddress",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "address.hint",
+									"value": "asdcasdc",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "address.lat",
+									"value": "12.11111",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "address.long",
+									"value": "56.23233",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "address.town",
+									"value": "1",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "address_id",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8000/api/main/restaurants/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"main",
+								"restaurants",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "restaurants detail",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8000/api/main/restaurants/2/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"main",
+								"restaurants",
+								"2",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "restaurants update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Test Updafdfdted",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Some Description",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/home/usedi/Pictures/Screenshot from 2019-09-12 01-45-40.png"
+								},
+								{
+									"key": "address.address",
+									"value": "someaddress",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "address.hint",
+									"value": "asdcasdc",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "address.lat",
+									"value": "12.432343",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "address.long",
+									"value": "56.23233",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "address.town",
+									"value": "1",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8000/api/main/restaurants/2/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"main",
+								"restaurants",
+								"2",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "restaurants delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8000/api/main/restaurants/1/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"main",
+								"restaurants",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Menu",
+			"item": [
+				{
+					"name": "menus list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/main/menus/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"main",
+								"menus",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "menus by restaurant",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8000/api/main/menus/by_restaurant/?restaurant=2",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"main",
+								"menus",
+								"by_restaurant",
+								""
+							],
+							"query": [
+								{
+									"key": "restaurant",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "menus create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Test",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Some Description",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/home/usedi/Pictures/Screenshot from 2019-09-12 01-45-40.png"
+								},
+								{
+									"key": "is_hidden",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "priority",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "restaurant",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8000/api/main/menus/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"main",
+								"menus",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "menus detail",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8000/api/main/menus/1/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"main",
+								"menus",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "menus update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Test Updated",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Some Description",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "is_hidden",
+									"value": "0",
+									"type": "text"
+								},
+								{
+									"key": "priority",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "restaurant",
+									"value": "3",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8000/api/main/menus/1/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"main",
+								"menus",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "menus delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8000/api/main/menus/1/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"main",
+								"menus",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Menu Item",
+			"item": [
+				{
+					"name": "menu items list",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8000/api/main/menu_items/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"main",
+								"menu_items",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "menus by menu",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "JWT {{token}}"
+							}
+						],
+						"url": {
+							"raw": "localhost:8000/api/main/menu_items/by_menu/?menu=2",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"main",
+								"menu_items",
+								"by_menu",
+								""
+							],
+							"query": [
+								{
+									"key": "menu",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "menu items create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Test",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Some Description",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"type": "file",
+									"src": "/home/usedi/Pictures/Screenshot from 2019-09-12 01-45-40.png"
+								},
+								{
+									"key": "is_hidden",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "priority",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "menu",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "200",
+									"type": "text"
+								},
+								{
+									"key": "with_garnish",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8000/api/main/menu_items/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"main",
+								"menu_items",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "menu items detail",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8000/api/main/orders/1/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"main",
+								"orders",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "menu items update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"comment\": \"comment 1\",\n\t\"order_menu_items\": [\n\t\t\t{\n\t\t\t\t\"menu_item\": 2,\n\t\t\t\t\"count\": 2\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"menu_item\": 3,\n\t\t\t\t\"count\": 4\n\t\t\t}\n\t\t]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/main/orders/1/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"main",
+								"orders",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "menu items delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "JWT {{token}}"
+							}
+						],
+						"url": {
+							"raw": "localhost:8000/api/main/menu_items/1/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"main",
+								"menu_items",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "orders list",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8000/api/main/orders/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"main",
+								"orders",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "orders by user",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "JWT {{token}}"
+							}
+						],
+						"url": {
+							"raw": "localhost:8000/api/main/orders/by_user/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"main",
+								"orders",
+								"by_user",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "orders create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"comment\": \"comment 1\",\n\t\"status\": 4,\n\t\"order_menu_items\": [\n\t\t\t{\n\t\t\t\t\"menu_item\": 2,\n\t\t\t\t\"count\": 3\n\t\t\t}\n\t\t]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/main/orders/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"main",
+								"orders",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "orders detail",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT {{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8000/api/main/orders/5/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"main",
+								"orders",
+								"5",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "orders update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT {{token}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"comment\": \"comment 1 updated 4\",\n\t\"status\": 7,\n\t\"order_menu_items\": [\n\t\t\t{\n\t\t\t\t\"menu_item\": 2,\n\t\t\t\t\"count\": 1\n\t\t\t},\n\t\t\t{\n\t\t\t\t\"menu_item\": 3,\n\t\t\t\t\"count\": 2\n\t\t\t}\n\t\t]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8000/api/main/orders/8/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"main",
+								"orders",
+								"8",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "orders delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "JWT {{token}}"
+							}
+						],
+						"url": {
+							"raw": "localhost:8000/api/main/orders/3/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"main",
+								"orders",
+								"3",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Custom User",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "phone",
+									"value": "7021231231",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "role",
+									"value": "3",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8000/api/users/custom_users/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"users",
+								"custom_users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "JWT {{token}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "phone",
+									"value": "7021231231",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "role",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8000/api/users/custom_users/24/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"users",
+								"custom_users",
+								"24",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "JWT {{token}}"
+							}
+						],
+						"url": {
+							"raw": "localhost:8000/api/users/custom_users/24/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"users",
+								"custom_users",
+								"24",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Country",
+			"item": [
+				{
+					"name": "list",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "JWT {{token}}"
+							}
+						],
+						"url": {
+							"raw": "localhost:8000/api/locations/countries/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"locations",
+								"countries",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "RUS",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8000/api/locations/countries/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"locations",
+								"countries",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "JWT {{token}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Rus",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8000/api/locations/countries/2/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"locations",
+								"countries",
+								"2",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "detail",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "JWT {{token}}"
+							}
+						],
+						"url": {
+							"raw": "localhost:8000/api/locations/countries/2/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"locations",
+								"countries",
+								"2",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "JWT {{token}}"
+							}
+						],
+						"url": {
+							"raw": "localhost:8000/api/locations/countries/2/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"locations",
+								"countries",
+								"2",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Town",
+			"item": [
+				{
+					"name": "list",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "JWT {{token}}"
+							}
+						],
+						"url": {
+							"raw": "localhost:8000/api/locations/towns/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"locations",
+								"towns",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "RUS",
+									"type": "text"
+								},
+								{
+									"key": "country_id",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8000/api/locations/towns/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"locations",
+								"towns",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "JWT {{token}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Rus",
+									"type": "text"
+								},
+								{
+									"key": "country_id",
+									"value": "3",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8000/api/locations/towns/3/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"locations",
+								"towns",
+								"3",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "detail",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "JWT {{token}}"
+							}
+						],
+						"url": {
+							"raw": "localhost:8000/api/locations/towns/2/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"locations",
+								"towns",
+								"2",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "JWT {{token}}"
+							}
+						],
+						"url": {
+							"raw": "localhost:8000/api/locations/towns/2/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"locations",
+								"towns",
+								"2",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Address",
+			"item": [
+				{
+					"name": "list",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "JWT {{token}}"
+							}
+						],
+						"url": {
+							"raw": "localhost:8000/api/locations/addresses/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"locations",
+								"addresses",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "address",
+									"value": "New Address",
+									"type": "text"
+								},
+								{
+									"key": "hint",
+									"value": "Some Hint",
+									"type": "text"
+								},
+								{
+									"key": "lat",
+									"value": "12.312",
+									"type": "text"
+								},
+								{
+									"key": "long",
+									"value": "55.4223",
+									"type": "text"
+								},
+								{
+									"key": "town",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8000/api/locations/addresses/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"locations",
+								"addresses",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "JWT {{token}}"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "address",
+									"value": "RUpdated",
+									"type": "text"
+								},
+								{
+									"key": "hint",
+									"value": "SOme hintq",
+									"type": "text"
+								},
+								{
+									"key": "lat",
+									"value": "12.232",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "long",
+									"value": "66.2332",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "town",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8000/api/locations/addresses/9/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"locations",
+								"addresses",
+								"9",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "detail",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "JWT {{token}}"
+							}
+						],
+						"url": {
+							"raw": "localhost:8000/api/locations/addresses/10/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"locations",
+								"addresses",
+								"10",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"type": "text",
+								"value": "JWT {{token}}"
+							}
+						],
+						"url": {
+							"raw": "localhost:8000/api/locations/addresses/10/",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"locations",
+								"addresses",
+								"10",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
